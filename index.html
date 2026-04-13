@@ -4,7 +4,6 @@
 <title>Dhesika Portfolio</title>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
 <style>
 
@@ -109,18 +108,34 @@ h1 {
     box-shadow: 0 0 20px #38bdf8;
 }
 
-/* ACHIEVEMENTS (UPDATED) */
-.cert-img {
-    width: 280px;
-    margin: 10px;
-    border-radius: 10px;
-    border: 2px solid rgba(255,255,255,0.1);
+/* CERTIFICATIONS */
+.cert-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    padding: 30px;
+    text-align: center;
+}
+
+.cert-grid a {
+    text-decoration: none;
+    color: white;
+    background: rgba(255,255,255,0.05);
+    padding: 15px;
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
     transition: 0.3s;
 }
 
-.cert-img:hover {
-    transform: scale(1.05);
+.cert-grid a:hover {
+    transform: translateY(-8px);
     box-shadow: 0 0 15px #38bdf8;
+}
+
+.cert-img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 10px;
 }
 
 /* FLOATING BUTTON */
@@ -158,7 +173,7 @@ section {
 <div class="navbar">
     <a href="#home">Home</a>
     <a href="#projects">Projects</a>
-    <a href="#achievements">Achievements</a>
+    <a href="#certifications">Certifications</a>
     <a href="#contact">Contact</a>
 </div>
 
@@ -203,18 +218,18 @@ section {
     <div class="cards">
 
         <div class="card">
-            <h3>LoRa Weather Monitoring System</h3>
-            <p>Long-range IoT system for environmental monitoring using LoRa communication.</p>
+            <h3>LoRa-Based Weather Monitoring System</h3>
+            <p>Long-range IoT system using LoRa for environmental monitoring (temperature, humidity, pressure, soil moisture).</p>
         </div>
 
         <div class="card">
             <h3>Spring Boot Backend Development</h3>
-            <p>REST API development with database integration and scalable backend design.</p>
+            <p>REST API development using Spring Boot with database integration and scalable backend architecture.</p>
         </div>
 
         <div class="card">
             <h3>Bus Crowd Management System</h3>
-            <p>IoT system for passenger counting and crowd control automation.</p>
+            <p>IoT system for passenger counting and overcrowding control using sensors.</p>
         </div>
 
         <div class="card">
@@ -226,19 +241,32 @@ section {
 
 </section>
 
-<!-- ACHIEVEMENTS (NOW CONTAINS CERTIFICATES) -->
-<section id="achievements">
+<!-- CERTIFICATIONS -->
+<section id="certifications">
 
-    <h2>Achievements & Certifications</h2>
+    <h2>Certifications</h2>
 
-    <div style="display:flex; flex-wrap:wrap; justify-content:center;">
+    <div class="cert-grid">
 
-        <img class="cert-img" src="https://raw.githubusercontent.com/Dhesika-24/My-Certifications/main/cit.png">
-        <img class="cert-img" src="https://raw.githubusercontent.com/Dhesika-24/My-Certifications/main/citcertificate.png">
-        <img class="cert-img" src="https://raw.githubusercontent.com/Dhesika-24/My-Certifications/main/rvs.png">
-        <img class="cert-img" src="https://raw.githubusercontent.com/Dhesika-24/My-Certifications/main/rvspic.png">
-        <img class="cert-img" src="https://raw.githubusercontent.com/Dhesika-24/My-Certifications/main/tnwis.png">
-        <img class="cert-img" src="https://raw.githubusercontent.com/Dhesika-24/My-Certifications/main/tnwiscertificate.png">
+        <a href="nptel2.png" target="_blank">
+            <img src="nptel2.png" class="cert-img">
+            <p>NPTEL Certificate</p>
+        </a>
+
+        <a href="Nptel.png" target="_blank">
+            <img src="Nptel.png" class="cert-img">
+            <p>NPTEL Course</p>
+        </a>
+
+        <a href="marathon.png" target="_blank">
+            <img src="marathon.png" class="cert-img">
+            <p>Marathon Participation</p>
+        </a>
+
+        <a href="conference.png" target="_blank">
+            <img src="conference.png" class="cert-img">
+            <p>Conference Certificate</p>
+        </a>
 
     </div>
 
@@ -250,13 +278,14 @@ section {
     <p>Open for internships, backend & IoT roles</p>
 </section>
 
-<!-- HIRE BUTTON -->
+<!-- FLOATING BUTTON -->
 <div class="hire-btn" onclick="openLink('mailto:yourmail@gmail.com')">
     🚀 Hire Me
 </div>
 
 <script>
 
+/* OPEN LINKS */
 function openLink(url){
     window.open(url, "_blank");
 }
