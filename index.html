@@ -12,7 +12,6 @@ body {
     font-family: 'Segoe UI';
     background: #0a0f1f;
     color: white;
-    overflow-x: hidden;
 }
 
 /* STAR BACKGROUND */
@@ -23,169 +22,100 @@ canvas {
     z-index: -1;
 }
 
-/* NAVBAR */
-.navbar {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    padding: 15px;
-    backdrop-filter: blur(12px);
-    background: rgba(255,255,255,0.05);
-    z-index: 1000;
-}
-
-.navbar a {
-    color: white;
-    margin: 0 18px;
-    text-decoration: none;
-}
-
-.navbar a:hover {
-    color: #38bdf8;
-}
-
-/* HEADER LAYOUT */
-header {
+/* FRONT PAGE */
+.hero {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 90px 60px;
+    padding: 60px;
 }
 
-.header-center {
-    text-align: center;
+/* LEFT TEXT */
+.hero-left {
     flex: 1;
 }
 
-h1 {
-    font-size: 48px;
+.hero-left h1 {
+    font-size: 50px;
     background: linear-gradient(90deg, #38bdf8, #a78bfa);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
-.header-right img {
-    width: 170px;
-    height: 170px;
-    border-radius: 50%;
-    border: 3px solid #38bdf8;
+.hero-left p {
+    color: #cbd5f5;
+    font-size: 18px;
 }
 
-/* SOCIAL */
+/* RIGHT IMAGE BIG */
+.hero-right img {
+    width: 260px;
+    height: 260px;
+    border-radius: 50%;
+    border: 4px solid #38bdf8;
+}
+
+/* SOCIAL ICONS */
 .social i, .social img {
-    font-size: 24px;
-    margin: 10px;
+    font-size: 28px;
+    margin: 12px;
     cursor: pointer;
     transition: 0.3s;
 }
 
 .social i:hover, .social img:hover {
-    transform: scale(1.3);
+    transform: scale(1.2);
 }
 
-/* ABOUT */
-.about {
-    text-align: center;
-    max-width: 600px;
-    margin: auto;
-    color: #cbd5f5;
+/* MENU BOXES */
+.menu {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 30px;
 }
 
-/* PROJECTS */
-.cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 20px;
-    padding: 30px;
+.box {
+    padding: 15px 25px;
+    background: rgba(255,255,255,0.06);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: 0.3s;
+    backdrop-filter: blur(10px);
+    font-weight: bold;
+}
+
+.box:hover {
+    transform: translateY(-5px);
+    background: rgba(56,189,248,0.3);
+}
+
+/* CONTENT SECTIONS */
+.section {
+    display: none;
+    padding: 40px;
 }
 
 .card {
     background: rgba(255,255,255,0.05);
     padding: 20px;
     border-radius: 12px;
-    transition: 0.3s;
+    margin: 10px 0;
 }
 
-.card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 0 20px #38bdf8;
-}
-
-/* INTERN BOX */
-.intern-box {
-    margin: 40px;
-    padding: 20px;
-    background: rgba(255,255,255,0.05);
-    border-radius: 12px;
-    cursor: pointer;
-}
-
-.intern-content {
-    display: none;
-    margin-top: 10px;
-    color: #cbd5f5;
-}
-
-/* CERTIFICATIONS ELITE */
-.cert-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 20px;
-    padding: 30px;
-}
-
-.cert-card a {
-    display: block;
-    background: rgba(255,255,255,0.05);
-    padding: 15px;
-    border-radius: 12px;
+/* RESUME */
+.resume-box {
     text-align: center;
-    text-decoration: none;
-    color: white;
-    transition: 0.3s;
 }
 
-.cert-card img {
-    width: 100%;
-    border-radius: 10px;
-}
-
-.cert-card:hover a {
-    transform: scale(1.05);
-    box-shadow: 0 0 20px #38bdf8;
-}
-
-/* FILTER BUTTONS */
-.filter-btn {
-    margin: 5px;
-    padding: 8px 14px;
-    border-radius: 20px;
-    border: none;
-    cursor: pointer;
-    background: rgba(255,255,255,0.08);
-    color: white;
-}
-
-/* ACHIEVEMENTS */
-.achievements {
-    text-align: center;
-    padding: 40px;
-    color: #cbd5f5;
-}
-
-/* FLOAT BUTTON */
-.hire-btn {
-    position: fixed;
-    bottom: 25px;
-    right: 25px;
+button {
+    padding: 10px 20px;
     background: #38bdf8;
-    padding: 14px 18px;
-    border-radius: 50px;
+    border: none;
+    border-radius: 10px;
     cursor: pointer;
     font-weight: bold;
-    box-shadow: 0 0 20px #38bdf8;
 }
 
 </style>
@@ -195,162 +125,104 @@ h1 {
 
 <canvas id="stars"></canvas>
 
-<!-- NAVBAR -->
-<div class="navbar">
-    <a href="#home">Home</a>
-    <a href="#projects">Projects</a>
-    <a href="#internships">Internships</a>
-    <a href="#certifications">Certifications</a>
-    <a href="#achievements">Achievements</a>
-</div>
+<!-- FRONT PAGE -->
+<div class="hero">
 
-<!-- HEADER -->
-<header id="home">
+    <!-- LEFT -->
+    <div class="hero-left">
 
-    <div class="social">
-        <img src="https://raw.githubusercontent.com/Dhesika-24/My-Certifications/main/cit.png">
-
-<img src="https://raw.githubusercontent.com/Dhesika-24/My-Certifications/main/citcertificate.png">
-
-<img src="https://raw.githubusercontent.com/Dhesika-24/My-Certifications/main/rvs.png">
-
-<img src="https://raw.githubusercontent.com/Dhesika-24/My-Certifications/main/rvspic.png">
-
-<img src="https://raw.githubusercontent.com/Dhesika-24/My-Certifications/main/tnwis.png">
-
-<img src="https://raw.githubusercontent.com/Dhesika-24/My-Certifications/main/tnwiscertificate.png">
-    </div>
-
-    <div class="header-center">
         <h1>DHESIKA P.M</h1>
-        <p>IoT • Backend • AI Developer</p>
+        <p>Electronics and Communication Engineering</p>
+        <p>PORTFOLIO</p>
+
+        <!-- SOCIAL -->
+        <div class="social">
+
+            <i class="fab fa-linkedin" onclick="openLink('https://www.linkedin.com/in/pm-dhesika-864410294')"></i>
+            <i class="fab fa-github" onclick="openLink('https://github.com/Dhesika-24')"></i>
+
+            <img src="https://upload.wikimedia.org/wikipedia/commons/1/19/LeetCode_logo_black.png"
+                 width="28"
+                 onclick="openLink('https://leetcode.com/u/dhesika_24/')">
+
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/65/HackerRank_logo.png"
+                 width="28"
+                 onclick="openLink('https://www.hackerrank.com/')">
+
+        </div>
+
     </div>
 
-    <div class="header-right">
+    <!-- RIGHT IMAGE -->
+    <div class="hero-right">
         <img src="profile.jpeg">
     </div>
 
-</header>
+</div>
 
-<div class="about">
-    Electronics and Communication Engineering student focused on IoT, Backend & AI systems.
+<!-- MENU BOXES -->
+<div class="menu">
+
+    <div class="box" onclick="show('resume')">RESUME</div>
+    <div class="box" onclick="show('projects')">PROJECTS</div>
+    <div class="box" onclick="show('intern')">INTERNSHIPS</div>
+    <div class="box" onclick="show('cert')">CERTIFICATES</div>
+    <div class="box" onclick="show('ach')">ACHIEVEMENTS</div>
+
+</div>
+
+<!-- RESUME -->
+<div id="resume" class="section">
+    <h2>Resume</h2>
+    <div class="resume-box">
+        <button onclick="openLink('DHESIKA _PM.pdf')">OPEN RESUME</button>
+    </div>
 </div>
 
 <!-- PROJECTS -->
-<section id="projects">
-<h2 style="text-align:center;">Projects</h2>
-
-<div class="cards">
+<div id="projects" class="section">
+    <h2>Projects</h2>
     <div class="card">LoRa Weather Monitoring System</div>
     <div class="card">Spring Boot Backend Development</div>
 </div>
-</section>
 
 <!-- INTERNSHIPS -->
-<section id="internships">
-
-<div class="intern-box" onclick="toggleIntern()">
-<h2>Internships ▼</h2>
-
-<div class="intern-content" id="internContent">
-<p>IoT Internship</p>
-<p>PCB Designing</p>
-<p>VLSI Training</p>
+<div id="intern" class="section">
+    <h2>Internships</h2>
+    <div class="card">IoT Internship Certificate</div>
+    <div class="card">PCB Designing Internship</div>
+    <div class="card">VLSI Training</div>
 </div>
 
+<!-- CERTIFICATES -->
+<div id="cert" class="section">
+    <h2>Certificates</h2>
+    <div class="card">NPTEL</div>
+    <div class="card">RVS</div>
+    <div class="card">TNWIS</div>
 </div>
-
-</section>
-
-<!-- CERTIFICATIONS -->
-<section id="certifications">
-
-<h2 style="text-align:center;">Certifications</h2>
-
-<div style="text-align:center;">
-    <button class="filter-btn" onclick="filterCert('all')">All</button>
-    <button class="filter-btn" onclick="filterCert('nptel')">NPTEL</button>
-    <button class="filter-btn" onclick="filterCert('event')">Events</button>
-    <button class="filter-btn" onclick="filterCert('iot')">IoT</button>
-</div>
-
-<div class="cert-grid">
-
-<div class="cert-card nptel">
-<a href="https://raw.githubusercontent.com/Dhesika-24/My-Certifications/main/cit.png" target="_blank">
-<img src="cit.png"><p>CIT</p>
-</a>
-</div>
-
-<div class="cert-card nptel">
-<a href="citcertificate.png" target="_blank">
-<img src="citcertificate.png"><p>CIT Cert</p>
-</a>
-</div>
-
-<div class="cert-card event">
-<a href="rvs.png" target="_blank">
-<img src="rvs.png"><p>RVS</p>
-</a>
-</div>
-
-<div class="cert-card event">
-<a href="rvspic.png" target="_blank">
-<img src="rvspic.png"><p>RVS Event</p>
-</a>
-</div>
-
-<div class="cert-card iot">
-<a href="tnwis.png" target="_blank">
-<img src="tnwis.png"><p>TNWIS</p>
-</a>
-</div>
-
-<div class="cert-card iot">
-<a href="tnwiscertificate.png" target="_blank">
-<img src="tnwiscertificate.png"><p>TNWIS Cert</p>
-</a>
-</div>
-
-</div>
-</section>
 
 <!-- ACHIEVEMENTS -->
-<section id="achievements">
-<h2 style="text-align:center;">Achievements</h2>
-
-<div class="achievements">
-Built IoT systems • Technical events • Workshops • Certifications completed
-</div>
-
-</section>
-
-<!-- FLOAT BUTTON -->
-<div class="hire-btn" onclick="openLink('mailto:yourmail@gmail.com')">
-🚀 Hire Me
+<div id="ach" class="section">
+    <h2>Achievements</h2>
+    <div class="card">IoT Projects Completed</div>
+    <div class="card">Technical Event Organizer</div>
 </div>
 
 <script>
 
+/* SHOW ONLY ONE SECTION */
+function show(id){
+
+    let sections = document.querySelectorAll(".section");
+    sections.forEach(s => s.style.display = "none");
+
+    document.getElementById(id).style.display = "block";
+}
+
+/* OPEN LINKS */
 function openLink(url){
-    window.open(url,"_blank");
-}
-
-function toggleIntern(){
-    let box = document.getElementById("internContent");
-    box.style.display = box.style.display === "block" ? "none" : "block";
-}
-
-function filterCert(type){
-    let cards = document.getElementsByClassName("cert-card");
-
-    for(let i=0;i<cards.length;i++){
-        if(type==="all"){
-            cards[i].style.display="block";
-        } else {
-            cards[i].style.display = cards[i].classList.contains(type) ? "block" : "none";
-        }
-    }
+    window.open(url, "_blank");
 }
 
 /* STAR BACKGROUND */
@@ -361,9 +233,9 @@ canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
 let stars = Array(100).fill().map(()=>({
-    x:Math.random()*canvas.width,
-    y:Math.random()*canvas.height,
-    r:Math.random()*2
+    x: Math.random()*canvas.width,
+    y: Math.random()*canvas.height,
+    r: Math.random()*2
 }));
 
 function animate(){
