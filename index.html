@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,24 +23,40 @@ canvas {
     z-index: -1;
 }
 
-/* HEADER LAYOUT FIXED */
+/* NAVBAR */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 15px;
+    backdrop-filter: blur(12px);
+    background: rgba(255,255,255,0.05);
+    z-index: 1000;
+}
+
+.navbar a {
+    color: white;
+    margin: 0 18px;
+    text-decoration: none;
+}
+
+.navbar a:hover {
+    color: #38bdf8;
+}
+
+/* HEADER LAYOUT */
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 80px 60px;
+    padding: 90px 60px;
 }
 
-/* LEFT TEXT */
-.header-left {
-    flex: 1;
-    text-align: left;
-}
-
-/* CENTER NAME */
 .header-center {
-    flex: 1;
     text-align: center;
+    flex: 1;
 }
 
 h1 {
@@ -51,15 +66,9 @@ h1 {
     -webkit-text-fill-color: transparent;
 }
 
-/* RIGHT PROFILE IMAGE */
-.header-right {
-    flex: 1;
-    text-align: right;
-}
-
-.profile {
-    width: 180px;
-    height: 180px;
+.header-right img {
+    width: 170px;
+    height: 170px;
     border-radius: 50%;
     border: 3px solid #38bdf8;
 }
@@ -84,7 +93,7 @@ h1 {
     color: #cbd5f5;
 }
 
-/* CARDS */
+/* PROJECTS */
 .cards {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -96,50 +105,74 @@ h1 {
     background: rgba(255,255,255,0.05);
     padding: 20px;
     border-radius: 12px;
-    cursor: pointer;
     transition: 0.3s;
 }
 
 .card:hover {
-    transform: translateY(-8px);
+    transform: translateY(-10px);
     box-shadow: 0 0 20px #38bdf8;
 }
 
-/* INTERN BOX (CLICK TO EXPAND) */
+/* INTERN BOX */
 .intern-box {
     margin: 40px;
     padding: 20px;
     background: rgba(255,255,255,0.05);
     border-radius: 12px;
     cursor: pointer;
-    transition: 0.3s;
 }
 
 .intern-content {
     display: none;
-    margin-top: 15px;
+    margin-top: 10px;
     color: #cbd5f5;
 }
 
-/* CERTIFICATES */
+/* CERTIFICATIONS ELITE */
 .cert-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 15px;
-    padding: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    padding: 30px;
 }
 
-.cert-grid a {
+.cert-card a {
+    display: block;
+    background: rgba(255,255,255,0.05);
+    padding: 15px;
+    border-radius: 12px;
+    text-align: center;
     text-decoration: none;
     color: white;
-    background: rgba(255,255,255,0.05);
-    padding: 10px;
+    transition: 0.3s;
+}
+
+.cert-card img {
+    width: 100%;
     border-radius: 10px;
 }
 
-.cert-img {
-    width: 100%;
-    border-radius: 8px;
+.cert-card:hover a {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px #38bdf8;
+}
+
+/* FILTER BUTTONS */
+.filter-btn {
+    margin: 5px;
+    padding: 8px 14px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    background: rgba(255,255,255,0.08);
+    color: white;
+}
+
+/* ACHIEVEMENTS */
+.achievements {
+    text-align: center;
+    padding: 40px;
+    color: #cbd5f5;
 }
 
 /* FLOAT BUTTON */
@@ -162,36 +195,32 @@ h1 {
 
 <canvas id="stars"></canvas>
 
+<!-- NAVBAR -->
+<div class="navbar">
+    <a href="#home">Home</a>
+    <a href="#projects">Projects</a>
+    <a href="#internships">Internships</a>
+    <a href="#certifications">Certifications</a>
+    <a href="#achievements">Achievements</a>
+</div>
+
 <!-- HEADER -->
-<header>
+<header id="home">
 
-    <!-- LEFT -->
-    <div class="header-left">
-        <div class="social">
-
-            <i class="fab fa-linkedin" onclick="openLink('https://www.linkedin.com/in/pm-dhesika-864410294')"></i>
-            <i class="fab fa-github" onclick="openLink('https://github.com/Dhesika-24')"></i>
-
-            <img src="https://upload.wikimedia.org/wikipedia/commons/1/19/LeetCode_logo_black.png"
-                 width="26"
-                 onclick="openLink('https://leetcode.com/u/dhesika_24/')">
-
-            <img src="https://upload.wikimedia.org/wikipedia/commons/6/65/HackerRank_logo.png"
-                 width="26"
-                 onclick="openLink('https://www.hackerrank.com/')">
-
-        </div>
+    <div class="social">
+        <i class="fab fa-linkedin" onclick="openLink('https://www.linkedin.com/in/pm-dhesika-864410294')"></i>
+        <i class="fab fa-github" onclick="openLink('https://github.com/Dhesika-24')"></i>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/1/19/LeetCode_logo_black.png" width="26" onclick="openLink('https://leetcode.com/u/dhesika_24/')">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/65/HackerRank_logo.png" width="26" onclick="openLink('https://www.hackerrank.com/')">
     </div>
 
-    <!-- CENTER -->
     <div class="header-center">
         <h1>DHESIKA P.M</h1>
         <p>IoT • Backend • AI Developer</p>
     </div>
 
-    <!-- RIGHT PROFILE -->
     <div class="header-right">
-        <img src="profile.jpeg" class="profile">
+        <img src="profile.jpeg">
     </div>
 
 </header>
@@ -201,76 +230,92 @@ h1 {
 </div>
 
 <!-- PROJECTS -->
-<section>
-    <h2 style="text-align:center;">Projects</h2>
+<section id="projects">
+<h2 style="text-align:center;">Projects</h2>
 
-    <div class="cards">
-
-        <div class="card">
-            <h3>LoRa Weather Monitoring</h3>
-            <p>Long-range IoT system for environmental sensing.</p>
-        </div>
-
-        <div class="card">
-            <h3>Spring Boot Backend</h3>
-            <p>REST APIs with database integration and backend logic.</p>
-        </div>
-
-    </div>
+<div class="cards">
+    <div class="card">LoRa Weather Monitoring System</div>
+    <div class="card">Spring Boot Backend Development</div>
+</div>
 </section>
 
-<!-- INTERNSHIPS CLICK BOX -->
-<section>
+<!-- INTERNSHIPS -->
+<section id="internships">
 
 <div class="intern-box" onclick="toggleIntern()">
-    <h2>Internships ▼</h2>
+<h2>Internships ▼</h2>
 
-    <div class="intern-content" id="internContent">
-        <p>• IoT Internship</p>
-        <p>• PCB Designing Internship</p>
-        <p>• VLSI Training</p>
-    </div>
+<div class="intern-content" id="internContent">
+<p>IoT Internship</p>
+<p>PCB Designing</p>
+<p>VLSI Training</p>
+</div>
+
 </div>
 
 </section>
 
 <!-- CERTIFICATIONS -->
-<section>
+<section id="certifications">
 
 <h2 style="text-align:center;">Certifications</h2>
 
-<div class="cert-grid">
-
-    <a href="nptel2.png" target="_blank">
-        <img src="nptel2.png" class="cert-img">
-        <p>NPTEL</p>
-    </a>
-
-    <a href="Nptel.png" target="_blank">
-        <img src="Nptel.png" class="cert-img">
-        <p>NPTEL Course</p>
-    </a>
-
-    <a href="marathon.png" target="_blank">
-        <img src="marathon.png" class="cert-img">
-        <p>Marathon</p>
-    </a>
-
-    <a href="conference.png" target="_blank">
-        <img src="conference.png" class="cert-img">
-        <p>Conference</p>
-    </a>
-
+<div style="text-align:center;">
+    <button class="filter-btn" onclick="filterCert('all')">All</button>
+    <button class="filter-btn" onclick="filterCert('nptel')">NPTEL</button>
+    <button class="filter-btn" onclick="filterCert('event')">Events</button>
+    <button class="filter-btn" onclick="filterCert('iot')">IoT</button>
 </div>
 
+<div class="cert-grid">
+
+<div class="cert-card nptel">
+<a href="https://raw.githubusercontent.com/Dhesika-24/My-Certifications/main/cit.png" target="_blank">
+<img src="cit.png"><p>CIT</p>
+</a>
+</div>
+
+<div class="cert-card nptel">
+<a href="citcertificate.png" target="_blank">
+<img src="citcertificate.png"><p>CIT Cert</p>
+</a>
+</div>
+
+<div class="cert-card event">
+<a href="rvs.png" target="_blank">
+<img src="rvs.png"><p>RVS</p>
+</a>
+</div>
+
+<div class="cert-card event">
+<a href="rvspic.png" target="_blank">
+<img src="rvspic.png"><p>RVS Event</p>
+</a>
+</div>
+
+<div class="cert-card iot">
+<a href="tnwis.png" target="_blank">
+<img src="tnwis.png"><p>TNWIS</p>
+</a>
+</div>
+
+<div class="cert-card iot">
+<a href="tnwiscertificate.png" target="_blank">
+<img src="tnwiscertificate.png"><p>TNWIS Cert</p>
+</a>
+</div>
+
+</div>
 </section>
 
 <!-- ACHIEVEMENTS -->
-<section>
+<section id="achievements">
 <h2 style="text-align:center;">Achievements</h2>
-<p style="text-align:center; color:#cbd5f5;">
-Built IoT systems • Organized events • Technical participation
-</p>
+
+<div class="achievements">
+Built IoT systems • Technical events • Workshops • Certifications completed
+</div>
+
 </section>
 
 <!-- FLOAT BUTTON -->
@@ -281,43 +326,53 @@ Built IoT systems • Organized events • Technical participation
 <script>
 
 function openLink(url){
-    window.open(url, "_blank");
+    window.open(url,"_blank");
 }
 
-/* INTERNSHIP TOGGLE */
 function toggleIntern(){
-    const box = document.getElementById("internContent");
+    let box = document.getElementById("internContent");
     box.style.display = box.style.display === "block" ? "none" : "block";
 }
 
-/* STAR ANIMATION */
+function filterCert(type){
+    let cards = document.getElementsByClassName("cert-card");
+
+    for(let i=0;i<cards.length;i++){
+        if(type==="all"){
+            cards[i].style.display="block";
+        } else {
+            cards[i].style.display = cards[i].classList.contains(type) ? "block" : "none";
+        }
+    }
+}
+
+/* STAR BACKGROUND */
 const canvas = document.getElementById("stars");
 const ctx = canvas.getContext("2d");
 
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
-let stars = Array(100).fill().map(() => ({
-    x: Math.random() * canvas.width,
-    y: Math.random() * canvas.height,
-    r: Math.random() * 2
+let stars = Array(100).fill().map(()=>({
+    x:Math.random()*canvas.width,
+    y:Math.random()*canvas.height,
+    r:Math.random()*2
 }));
 
 function animate(){
     ctx.clearRect(0,0,canvas.width,canvas.height);
-    ctx.fillStyle = "white";
+    ctx.fillStyle="white";
 
-    stars.forEach(s => {
+    stars.forEach(s=>{
         ctx.beginPath();
-        ctx.arc(s.x, s.y, s.r, 0, Math.PI*2);
+        ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
         ctx.fill();
-        s.y += 0.4;
-        if(s.y > canvas.height) s.y = 0;
+        s.y+=0.4;
+        if(s.y>canvas.height)s.y=0;
     });
 
     requestAnimationFrame(animate);
 }
-
 animate();
 
 </script>
