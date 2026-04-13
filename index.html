@@ -3,47 +3,45 @@
 <head>
 <title>Dhesi Portfolio</title>
 
-<!-- ICONS -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
-    @keyframes fadeDown {
-    from {opacity: 0; transform: translateY(-30px);}
-    to {opacity: 1; transform: translateY(0);}
-}
 
-@keyframes fadeUp {
-    from {opacity: 0; transform: translateY(30px);}
-    to {opacity: 1; transform: translateY(0);}
-}
-
-@keyframes zoomIn {
-    from {opacity: 0; transform: scale(0.8);}
-    to {opacity: 1; transform: scale(1);}
-}
+/* 🌈 MOVING BACKGROUND */
 body {
     margin: 0;
     font-family: 'Segoe UI';
-    background: linear-gradient(135deg, #0f172a, #020617);
     color: white;
+    background: linear-gradient(-45deg, #0f172a, #020617, #1e293b, #0f172a);
+    background-size: 400% 400%;
+    animation: gradientMove 10s ease infinite;
 }
 
-/* HEADER */
+/* BACKGROUND ANIMATION */
+@keyframes gradientMove {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+}
+
+/* HEADER CENTER FIX */
 header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 50px;
+    text-align: center;
+    padding: 60px 20px;
 }
 
-header h1 {
-    font-size: 45px;
+/* NAME */
+h1 {
+    font-size: 50px;
     margin: 0;
 }
 
-header p {
-    color: #94a3b8;
-    font-size: 18px;
+/* TYPING TEXT */
+.typing {
+    font-size: 22px;
+    color: #38bdf8;
+    margin-top: 10px;
+    height: 30px;
 }
 
 /* PROFILE IMAGE */
@@ -53,12 +51,22 @@ img {
     border-radius: 50%;
     object-fit: cover;
     border: 3px solid #38bdf8;
+    margin-top: 20px;
 }
 
-/* GLASS BOX */
+/* ABOUT */
+.about {
+    text-align: center;
+    max-width: 600px;
+    margin: auto;
+    margin-top: 20px;
+    color: #cbd5f5;
+}
+
+/* MENU */
 .menu {
     text-align: center;
-    margin-top: 30px;
+    margin-top: 40px;
 }
 
 .btn {
@@ -74,10 +82,10 @@ img {
 
 .btn:hover {
     transform: translateY(-5px);
-    background: rgba(255,255,255,0.15);
+    background: rgba(255,255,255,0.2);
 }
 
-/* SOCIAL ICONS */
+/* SOCIAL */
 .social {
     text-align: center;
     margin-top: 20px;
@@ -102,41 +110,37 @@ img {
     padding: 30px;
     border-radius: 15px;
     background: rgba(255,255,255,0.05);
+    animation: fadeIn 0.6s ease;
 }
 
-/* ANIMATION */
-.fade {
-    animation: fadeIn 0.6s ease-in-out;
-}
-
+/* FADE */
 @keyframes fadeIn {
     from {opacity: 0; transform: translateY(20px);}
     to {opacity: 1; transform: translateY(0);}
 }
+
 </style>
 </head>
 
 <body>
 
-<header style="text-align:center; padding:60px 20px;">
+<!-- HEADER -->
+<header>
 
-    <h1 style="font-size:50px; margin:0; animation: fadeDown 1s ease;">
-        DHESIKA P.M
-    </h1>
+    <h1>DHESIKA P.M</h1>
 
-    <p style="color:#94a3b8; font-size:20px; animation: fadeDown 1.5s ease;">
-        Electronics and Communication Engineering
-    </p>
+    <!-- TYPING EFFECT -->
+    <div class="typing" id="typing"></div>
 
-    <img src="profile.jpeg" 
-         style="width:180px; height:180px; border-radius:50%; object-fit:cover; margin-top:20px; animation: zoomIn 1.5s ease;">
+    <img src="profile.jpeg">
+
 </header>
-    <div style="text-align:center; margin-top:20px; animation: fadeUp 2s ease;">
-    <p style="max-width:600px; margin:auto; color:#cbd5f5; font-size:16px;">
-        I am an Electronics and Communication Engineering student passionate about 
-        building real-world systems using IoT and backend technologies. 
-        Currently exploring AI-integrated applications and intelligent system design.
-    </p>
+
+<!-- ABOUT -->
+<div class="about">
+    I am an Electronics and Communication Engineering student passionate about 
+    building real-world systems using IoT and backend technologies. 
+    Currently exploring AI-integrated applications and intelligent systems.
 </div>
 
 <!-- MENU -->
@@ -159,10 +163,10 @@ img {
 <!-- PROJECTS -->
 <div id="projects" class="section">
     <h2>Projects</h2>
-    <p><b>Bus Crowd Management System</b> – IoT-based overcrowding detection</p>
-    <p><b>LoRa Weather Monitoring</b> – Long-range environmental tracking</p>
-    <p><b>Drone Project</b> – Control + hardware integration</p>
-    <p><b>Spring Boot Backend</b> – REST API development</p>
+    <p><b>Bus Crowd Management</b></p>
+    <p><b>LoRa Weather Monitoring</b></p>
+    <p><b>Drone Project</b></p>
+    <p><b>Spring Boot Backend</b></p>
 </div>
 
 <!-- INTERNSHIPS -->
@@ -182,27 +186,45 @@ img {
 <!-- ACHIEVEMENTS -->
 <div id="achievements" class="section">
     <h2>Achievements</h2>
-    <p>Built real-time IoT systems</p>
-    <p>Organized Doodle Detectives event</p>
+    <p>Built IoT systems</p>
+    <p>Organized technical event</p>
 </div>
 
 <script>
-function showSection(id) {
-    let sections = document.querySelectorAll('.section');
-    sections.forEach(sec => sec.style.display = 'none');
 
-    let active = document.getElementById(id);
-    active.style.display = 'block';
-    active.classList.add('fade');
+/* SECTION SWITCH */
+function showSection(id) {
+    document.querySelectorAll('.section').forEach(sec => {
+        sec.style.display = 'none';
+    });
+
+    document.getElementById(id).style.display = 'block';
 }
 
+/* RESUME */
 function openResume() {
     window.open("DHESIKA _PM.pdf", "_blank");
 }
 
+/* SOCIAL */
 function openLink(url) {
     window.open(url, "_blank");
 }
+
+/* ✨ TYPING ANIMATION */
+const text = "Hi, I'm an IoT & Backend Developer";
+let i = 0;
+
+function typeEffect() {
+    if (i < text.length) {
+        document.getElementById("typing").innerHTML += text.charAt(i);
+        i++;
+        setTimeout(typeEffect, 80);
+    }
+}
+
+typeEffect();
+
 </script>
 
 </body>
