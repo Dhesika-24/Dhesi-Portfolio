@@ -17,14 +17,6 @@ body {
     scroll-behavior: smooth;
 }
 
-/* ================= STAR BACKGROUND ================= */
-canvas {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: -1;
-}
-
 /* ================= NAV ================= */
 nav {
     position: fixed;
@@ -43,7 +35,6 @@ nav a {
     color: white;
     text-decoration: none;
     font-weight: bold;
-    cursor: pointer;
 }
 
 /* ================= HERO ================= */
@@ -75,15 +66,23 @@ nav a {
 }
 
 /* ================= SOCIAL ================= */
-.social i, .social img {
+.social i {
     margin: 10px;
     font-size: 26px;
     cursor: pointer;
 }
 
-/* ================= SECTION ================= */
+/* ================= SECTIONS ================= */
 section {
     padding: 80px 40px;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s ease;
+}
+
+section.show {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 /* ================= GRID ================= */
@@ -104,6 +103,7 @@ section {
 
 .card:hover {
     transform: scale(1.05);
+    background: rgba(56,189,248,0.15);
 }
 
 /* ================= POPUP ================= */
@@ -125,22 +125,12 @@ section {
     border-radius: 12px;
 }
 
-/* ================= RESPONSIVE ================= */
-@media(max-width:768px){
-    .hero {
-        flex-direction: column;
-        text-align: center;
-    }
-}
-
 </style>
 </head>
 
 <body>
 
-<canvas id="stars"></canvas>
-
-<!-- ================= NAV ================= -->
+<!-- NAV -->
 <nav>
     <a href="#home">Home</a>
     <a href="#projects">Projects</a>
@@ -149,7 +139,7 @@ section {
     <a href="#ach">Achievements</a>
 </nav>
 
-<!-- ================= HERO ================= -->
+<!-- HERO -->
 <div class="hero" id="home">
 
     <div class="hero-center">
@@ -170,32 +160,27 @@ section {
 
 </div>
 
-<!-- ================= PROJECTS ================= -->
+<!-- PROJECTS -->
 <section id="projects">
 <h2>🚀 Projects</h2>
-
 <div class="grid">
     <div class="card">LoRa Weather Monitoring System</div>
     <div class="card">Spring Boot Backend Development</div>
 </div>
 </section>
 
-<!-- ================= INTERNSHIPS ================= -->
+<!-- INTERNSHIPS -->
 <section id="intern">
 <h2>🚀 Internships</h2>
 
 <div class="grid">
-
     <div class="card" onclick="openImage('lumens.png')">Lumens Internship</div>
-
     <div class="card" onclick="openImage('iot and pcb.png')">IoT & PCB Internship</div>
-
     <div class="card" onclick="openImage('cadence.png')">Cadence Training</div>
-
 </div>
 </section>
 
-<!-- ================= CERTIFICATES ================= -->
+<!-- CERTIFICATES (RAW GITHUB FIXED) -->
 <section id="cert">
 <h2>📜 Certificates</h2>
 
@@ -212,74 +197,54 @@ section {
 </div>
 </section>
 
-<!-- ================= ACHIEVEMENTS ================= -->
+<!-- ACHIEVEMENTS -->
 <section id="ach">
 <h2>🏆 Achievements</h2>
 
 <div class="grid">
-
     <div class="card" onclick="openImage('Nptel.png')">NPTEL</div>
-
     <div class="card" onclick="openImage('nptel2.png')">NPTEL Advanced</div>
-
     <div class="card" onclick="openImage('marathon.png')">Marathon</div>
-
     <div class="card" onclick="openImage('conference.png')">Conference</div>
-
 </div>
 </section>
 
-<!-- ================= POPUP ================= -->
+<!-- POPUP -->
 <div id="popup" onclick="closeImage()">
     <img id="popupImg">
 </div>
 
 <script>
 
-/* OPEN IMAGE */
+/* IMAGE POPUP */
 function openImage(src){
     document.getElementById("popupImg").src = src;
     document.getElementById("popup").style.display = "flex";
 }
 
-/* CLOSE POPUP */
 function closeImage(){
     document.getElementById("popup").style.display = "none";
 }
 
-/* LINK */
+/* OPEN LINK */
 function openLink(url){
     window.open(url,"_blank");
 }
 
-/* STAR ANIMATION */
-const canvas = document.getElementById("stars");
-const ctx = canvas.getContext("2d");
+/* SCROLL REVEAL (APPLE STYLE) */
+const sections = document.querySelectorAll("section");
 
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-
-let stars = Array(120).fill().map(()=>({
-    x: Math.random()*canvas.width,
-    y: Math.random()*canvas.height,
-    r: Math.random()*2
-}));
-
-function animate(){
-    ctx.clearRect(0,0,canvas.width,canvas.height);
-    ctx.fillStyle="white";
-
-    stars.forEach(s=>{
-        ctx.beginPath();
-        ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
-        ctx.fill();
-        s.y += 0.5;
-        if(s.y > canvas.height) s.y = 0;
+const observer = new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+        if(entry.isIntersecting){
+            entry.target.classList.add("show");
+        }
     });
+},{threshold:0.15});
 
-    requestAnimationFrame(animate);
-}
-animate();
+sections.forEach(sec=>{
+    observer.observe(sec);
+});
 
 </script>
 
