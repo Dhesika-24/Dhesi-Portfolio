@@ -1,175 +1,181 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Dhesi Portfolio</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: 'Segoe UI', sans-serif;
-            background: #0f172a;
-            color: white;
-            text-align: center;
-        }
+<title>Dhesi Portfolio</title>
 
-        header {
-            padding: 40px;
-            background: #020617;
-        }
+<!-- ICONS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-        img {
-            width: 120px;
-            border-radius: 50%;
-            margin-bottom: 10px;
-        }
+<style>
+body {
+    margin: 0;
+    font-family: 'Segoe UI';
+    background: linear-gradient(135deg, #0f172a, #020617);
+    color: white;
+}
 
-        .container {
-            margin-top: 40px;
-        }
+/* HEADER */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 50px;
+}
 
-        .box {
-            display: inline-block;
-            width: 200px;
-            padding: 25px;
-            margin: 15px;
-            background: #1e293b;
-            border-radius: 15px;
-            font-size: 18px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: 0.3s;
-        }
+header h1 {
+    font-size: 45px;
+    margin: 0;
+}
 
-        .box:hover {
-            transform: translateY(-8px);
-            background: #334155;
-        }
+header p {
+    color: #94a3b8;
+    font-size: 18px;
+}
 
-        section {
-            margin-top: 100px;
-            padding: 20px;
-        }
+/* PROFILE IMAGE */
+img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #38bdf8;
+}
 
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin: 30px;
-        }
+/* GLASS BOX */
+.menu {
+    text-align: center;
+    margin-top: 30px;
+}
 
-        .card {
-            background: #1e293b;
-            padding: 20px;
-            border-radius: 15px;
-        }
+.btn {
+    display: inline-block;
+    padding: 15px 25px;
+    margin: 12px;
+    border-radius: 12px;
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(10px);
+    cursor: pointer;
+    transition: 0.3s;
+}
 
-        a {
-            color: #38bdf8;
-            text-decoration: none;
-        }
-    </style>
-<header style="display: flex; align-items: center; justify-content: space-between; padding: 40px; background: #020617;">
+.btn:hover {
+    transform: translateY(-5px);
+    background: rgba(255,255,255,0.15);
+}
 
-    <!-- LEFT SIDE (TEXT) -->
-    <div style="text-align: left;">
-        <h1 style="margin:0; font-size: 40px;">DHESIKA P.M</h1>
-        <p style="margin:5px 0; color:#94a3b8; font-size:18px;">
-            Electronics and Communication Engineering | Portfolio
-        </p>
+/* SOCIAL ICONS */
+.social {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.social i {
+    font-size: 26px;
+    margin: 15px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.social i:hover {
+    color: #38bdf8;
+    transform: scale(1.2);
+}
+
+/* SECTIONS */
+.section {
+    display: none;
+    margin: 40px;
+    padding: 30px;
+    border-radius: 15px;
+    background: rgba(255,255,255,0.05);
+}
+
+/* ANIMATION */
+.fade {
+    animation: fadeIn 0.6s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {opacity: 0; transform: translateY(20px);}
+    to {opacity: 1; transform: translateY(0);}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div>
+        <h1>DHESIKA P.M</h1>
+        <p>Electronics and Communication Engineering</p>
     </div>
 
-    <!-- RIGHT SIDE (IMAGE) -->
-    <img src="profile.jpeg" alt="Profile Photo"
-         style="width:180px; height:180px; border-radius:50%; object-fit:cover;">
-
+    <img src="profile.jpeg">
 </header>
 
-<div class="container">
-    <div class="box" onclick="openResume()">RESUME</div>
-    <div class="box" onclick="goToProjects()">PROJECTS</div>
-    <div class="box" onclick="goToInternships()">INTERNSHIPS</div>
-    <div class="box" onclick="goToAchievements()">ACHIEVEMENTS</div>
+<!-- MENU -->
+<div class="menu">
+    <div class="btn" onclick="showSection('projects')">PROJECTS</div>
+    <div class="btn" onclick="openResume()">RESUME</div>
+    <div class="btn" onclick="showSection('internships')">INTERNSHIPS</div>
+    <div class="btn" onclick="showSection('certificates')">CERTIFICATES</div>
+    <div class="btn" onclick="showSection('achievements')">ACHIEVEMENTS</div>
+</div>
+
+<!-- SOCIAL -->
+<div class="social">
+    <i class="fab fa-linkedin" onclick="openLink('https://linkedin.com/in/yourprofile')"></i>
+    <i class="fab fa-github" onclick="openLink('https://github.com/yourusername')"></i>
+    <i class="fas fa-code" onclick="openLink('https://leetcode.com/yourusername')"></i>
+    <i class="fab fa-hackerrank" onclick="openLink('https://hackerrank.com/yourusername')"></i>
 </div>
 
 <!-- PROJECTS -->
-<section id="projects">
+<div id="projects" class="section">
     <h2>Projects</h2>
-    <div class="grid">
-        <div class="card">
-            <h3>Bus Crowd Management</h3>
-            <p>IoT system for overcrowding detection and control.</p>
-        </div>
-
-        <div class="card">
-            <h3>LoRa Monitoring</h3>
-            <p>Long-range environmental monitoring system.</p>
-        </div>
-
-        <div class="card">
-            <h3>Drone Project</h3>
-            <p>Designed and tested drone system.</p>
-        </div>
-
-        <div class="card">
-            <h3>Spring Boot Backend</h3>
-            <p>Developed REST APIs.</p>
-        </div>
-    </div>
-</section>
+    <p><b>Bus Crowd Management System</b> – IoT-based overcrowding detection</p>
+    <p><b>LoRa Weather Monitoring</b> – Long-range environmental tracking</p>
+    <p><b>Drone Project</b> – Control + hardware integration</p>
+    <p><b>Spring Boot Backend</b> – REST API development</p>
+</div>
 
 <!-- INTERNSHIPS -->
-<section id="internships">
+<div id="internships" class="section">
     <h2>Internships</h2>
-    <div class="grid">
-        <div class="card">
-            <p>IoT Internship</p>
-            <a href="iot-certificate.pdf" target="_blank">View Certificate</a>
-        </div>
+    <p>IoT Internship</p>
+    <p>PCB Designing</p>
+    <p>VLSI (Cadence)</p>
+</div>
 
-        <div class="card">
-            <p>PCB Designing</p>
-            <a href="pcb-certificate.pdf" target="_blank">View Certificate</a>
-        </div>
-
-        <div class="card">
-            <p>VLSI (Cadence)</p>
-            <a href="vlsi-certificate.pdf" target="_blank">View Certificate</a>
-        </div>
-    </div>
-</section>
+<!-- CERTIFICATES -->
+<div id="certificates" class="section">
+    <h2>Certificates</h2>
+    <p>Spring Boot Certification</p>
+</div>
 
 <!-- ACHIEVEMENTS -->
-<section id="achievements">
+<div id="achievements" class="section">
     <h2>Achievements</h2>
-    <div class="grid">
-        <div class="card">
-            <p>Completed Spring Boot Certification</p>
-        </div>
-
-        <div class="card">
-            <p>Built real-time IoT systems</p>
-        </div>
-
-        <div class="card">
-            <p>Organized Doodle Detectives event</p>
-        </div>
-    </div>
-</section>
+    <p>Built real-time IoT systems</p>
+    <p>Organized Doodle Detectives event</p>
+</div>
 
 <script>
+function showSection(id) {
+    let sections = document.querySelectorAll('.section');
+    sections.forEach(sec => sec.style.display = 'none');
+
+    let active = document.getElementById(id);
+    active.style.display = 'block';
+    active.classList.add('fade');
+}
+
 function openResume() {
     window.open("resume.pdf", "_blank");
 }
 
-function goToProjects() {
-    document.getElementById("projects").scrollIntoView({ behavior: "smooth" });
-}
-
-function goToInternships() {
-    document.getElementById("internships").scrollIntoView({ behavior: "smooth" });
-}
-
-function goToAchievements() {
-    document.getElementById("achievements").scrollIntoView({ behavior: "smooth" });
+function openLink(url) {
+    window.open(url, "_blank");
 }
 </script>
 
