@@ -7,14 +7,82 @@
 
 <style>
 
-/* ================= BASE ================= */
+/* ================= PREMIUM BACKGROUND ================= */
 body {
     margin: 0;
     font-family: 'Segoe UI';
-    background: #0a0f1f;
-    color: white;
+    background: linear-gradient(135deg, #f4f6ff, #ffffff);
+    color: #1e1b4b;
     overflow-x: hidden;
     scroll-behavior: smooth;
+}
+
+/* floating glow */
+body::before {
+    content: "";
+    position: fixed;
+    width: 200%;
+    height: 200%;
+    top: -50%;
+    left: -50%;
+    background: radial-gradient(circle, rgba(99,102,241,0.12), transparent 40%);
+    animation: glowMove 12s linear infinite;
+    z-index: -1;
+}
+
+@keyframes glowMove {
+    0% { transform: translate(0,0); }
+    50% { transform: translate(80px, 60px); }
+    100% { transform: translate(0,0); }
+}
+
+/* ================= HERO ================= */
+.hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 100px 60px 40px;
+    flex-wrap: wrap;
+}
+
+/* glass card */
+.hero-center {
+    text-align: center;
+    flex: 1;
+
+    background: rgba(255,255,255,0.6);
+    backdrop-filter: blur(18px);
+    border: 1px solid rgba(99,102,241,0.2);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(99,102,241,0.15);
+}
+
+.hero-center h1 {
+    font-size: 45px;
+    color: #4338ca;
+}
+
+/* PROFILE IMAGE SMALLER */
+.hero-right img {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    border: 3px solid #6366f1;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+/* ================= SOCIAL ================= */
+.social i {
+    font-size: 24px;
+    margin: 10px;
+    cursor: pointer;
+    color: #4338ca;
+    transition: 0.3s;
+}
+
+.social i:hover {
+    transform: scale(1.2);
 }
 
 /* ================= NAV ================= */
@@ -24,65 +92,18 @@ nav {
     width: 100%;
     display: flex;
     justify-content: center;
-    gap: 25px;
-    padding: 15px;
-    background: rgba(255,255,255,0.05);
-    backdrop-filter: blur(10px);
+    gap: 20px;
+    padding: 14px;
+    background: rgba(255,255,255,0.7);
+    backdrop-filter: blur(12px);
     z-index: 1000;
+    border-bottom: 1px solid rgba(99,102,241,0.2);
 }
 
 nav a {
-    color: white;
     text-decoration: none;
     font-weight: bold;
-}
-
-/* ================= HERO ================= */
-.hero {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 120px 60px 60px;
-    flex-wrap: wrap;
-}
-
-.hero-center {
-    flex: 1;
-    text-align: center;
-}
-
-.hero-center h1 {
-    font-size: 55px;
-    background: linear-gradient(90deg,#38bdf8,#a78bfa);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-/* ⭐ PREMIUM TYPING STYLE */
-#typing {
-    font-size: 20px;
-    margin-top: 10px;
-    color: #93c5fd;
-    font-weight: 500;
-}
-
-/* blinking cursor */
-.cursor {
-    display: inline-block;
-    width: 10px;
-    animation: blink 0.8s infinite;
-    color: #38bdf8;
-}
-
-@keyframes blink {
-    50% { opacity: 0; }
-}
-
-/* ================= SOCIAL ================= */
-.social i {
-    margin: 10px;
-    font-size: 26px;
-    cursor: pointer;
+    color: #4338ca;
 }
 
 /* ================= SECTIONS ================= */
@@ -90,7 +111,7 @@ section {
     padding: 80px 40px;
     opacity: 0;
     transform: translateY(40px);
-    transition: all 0.8s ease;
+    transition: 0.8s ease;
 }
 
 section.show {
@@ -107,16 +128,17 @@ section.show {
 
 /* ================= CARD ================= */
 .card {
-    background: rgba(255,255,255,0.05);
-    padding: 20px;
-    border-radius: 12px;
+    background: rgba(255,255,255,0.7);
+    padding: 18px;
+    border-radius: 14px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
     cursor: pointer;
     transition: 0.3s;
 }
 
 .card:hover {
-    transform: scale(1.05);
-    background: rgba(56,189,248,0.15);
+    transform: translateY(-5px);
+    background: rgba(99,102,241,0.1);
 }
 
 /* ================= POPUP ================= */
@@ -126,7 +148,7 @@ section.show {
     top: 0; left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0,0,0,0.9);
+    background: rgba(0,0,0,0.85);
     justify-content: center;
     align-items: center;
     z-index: 9999;
@@ -136,6 +158,22 @@ section.show {
     max-width: 80%;
     max-height: 80%;
     border-radius: 12px;
+}
+
+/* ================= TYPING ================= */
+#typing {
+    font-size: 18px;
+    color: #6366f1;
+    min-height: 25px;
+    margin-top: 10px;
+}
+
+/* ================= RESPONSIVE ================= */
+@media(max-width:768px){
+    .hero{
+        flex-direction: column;
+        text-align: center;
+    }
 }
 
 </style>
@@ -159,14 +197,13 @@ section.show {
 
         <h1>👩‍💻 DHESIKA P.M</h1>
 
-        <!-- TYPING OUTPUT -->
         <div id="typing"></div>
 
         <p>Electronics & Communication Engineering</p>
 
         <div class="social">
-            <i class="fab fa-linkedin" onclick="openLink('https://www.linkedin.com/in/pm-dhesika-864410294')"></i>
-            <i class="fab fa-github" onclick="openLink('https://github.com/Dhesika-24')"></i>
+            <i class="fab fa-linkedin" onclick="window.open('https://www.linkedin.com')"></i>
+            <i class="fab fa-github" onclick="window.open('https://github.com')"></i>
         </div>
 
     </div>
@@ -186,17 +223,17 @@ section.show {
 </div>
 </section>
 
-<!-- INTERNSHIPS -->
+<!-- INTERNSHIPS (LOCAL FILES) -->
 <section id="intern">
 <h2>🚀 Internships</h2>
 <div class="grid">
     <div class="card" onclick="openImage('lumens.png')">Lumens Internship</div>
-    <div class="card" onclick="openImage('iot and pcb.png')">IoT & PCB Internship</div>
+    <div class="card" onclick="openImage('iot and pcb.png')">IoT & PCB Design</div>
     <div class="card" onclick="openImage('cadence.png')">Cadence Training</div>
 </div>
 </section>
 
-<!-- CERTIFICATES -->
+<!-- CERTIFICATES (GITHUB RAW - NOT CHANGED) -->
 <section id="cert">
 <h2>📜 Certificates</h2>
 <div class="grid">
@@ -212,14 +249,16 @@ section.show {
 </div>
 </section>
 
-<!-- ACHIEVEMENTS -->
+<!-- ACHIEVEMENTS (LOCAL FILES) -->
 <section id="ach">
 <h2>🏆 Achievements</h2>
 <div class="grid">
+
     <div class="card" onclick="openImage('Nptel.png')">NPTEL</div>
     <div class="card" onclick="openImage('nptel2.png')">NPTEL Advanced</div>
     <div class="card" onclick="openImage('marathon.png')">Marathon</div>
     <div class="card" onclick="openImage('conference.png')">Conference</div>
+
 </div>
 </section>
 
@@ -240,12 +279,7 @@ function closeImage(){
     document.getElementById("popup").style.display = "none";
 }
 
-/* LINK */
-function openLink(url){
-    window.open(url,"_blank");
-}
-
-/* SCROLL REVEAL */
+/* SCROLL ANIMATION */
 const sections = document.querySelectorAll("section");
 
 const observer = new IntersectionObserver(entries=>{
@@ -256,47 +290,20 @@ const observer = new IntersectionObserver(entries=>{
     });
 },{threshold:0.15});
 
-sections.forEach(sec=>{
-    observer.observe(sec);
-});
+sections.forEach(sec=>observer.observe(sec));
 
-/* ================= PREMIUM TYPING ================= */
+/* TYPING EFFECT */
+const text = "IoT Developer | Embedded Systems | AI Enthusiast";
+let i = 0;
 
-const roles = [
-    "IoT Developer",
-    "Embedded Systems Engineer",
-    "Spring Boot Backend Developer",
-    "AI & Automation Enthusiast"
-];
-
-let roleIndex = 0;
-let charIndex = 0;
-let typingDiv = document.getElementById("typing");
-
-function typeRole() {
-    if (charIndex < roles[roleIndex].length) {
-        typingDiv.innerHTML = roles[roleIndex].substring(0, charIndex + 1) + '<span class="cursor">|</span>';
-        charIndex++;
-        setTimeout(typeRole, 60);
-    } else {
-        setTimeout(eraseRole, 1200);
+function type(){
+    if(i < text.length){
+        document.getElementById("typing").innerHTML += text.charAt(i);
+        i++;
+        setTimeout(type, 60);
     }
 }
-
-function eraseRole() {
-    if (charIndex > 0) {
-        typingDiv.innerHTML = roles[roleIndex].substring(0, charIndex - 1) + '<span class="cursor">|</span>';
-        charIndex--;
-        setTimeout(eraseRole, 30);
-    } else {
-        roleIndex = (roleIndex + 1) % roles.length;
-        setTimeout(typeRole, 300);
-    }
-}
-
-window.onload = () => {
-    typeRole();
-};
+type();
 
 </script>
 
