@@ -2,36 +2,172 @@
 <html>
 <head>
     <title>Dhesi Portfolio</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background: #0f172a;
+            color: white;
+            text-align: center;
+        }
+
+        header {
+            padding: 40px;
+            background: #020617;
+        }
+
+        img {
+            width: 120px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+
+        .container {
+            margin-top: 40px;
+        }
+
+        .box {
+            display: inline-block;
+            width: 200px;
+            padding: 25px;
+            margin: 15px;
+            background: #1e293b;
+            border-radius: 15px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .box:hover {
+            transform: translateY(-8px);
+            background: #334155;
+        }
+
+        section {
+            margin-top: 100px;
+            padding: 20px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px;
+        }
+
+        .card {
+            background: #1e293b;
+            padding: 20px;
+            border-radius: 15px;
+        }
+
+        a {
+            color: #38bdf8;
+            text-decoration: none;
+        }
+    </style>
 </head>
-<body style="font-family: Arial; text-align: center;">
 
-    <h1>Hi, I'm Dhesi 👋</h1>
-    <p>Engineering Student | IoT & Backend Developer</p>
+<body>
 
-    <h2>About Me</h2>
-    <p>I build real-world systems using IoT and backend technologies.</p>
+<header>
+    <!-- PROFILE PHOTO -->
+    <img src="profile.jpg" alt="Profile Photo">
 
+    <h1>Dhesi</h1>
+    <p>Electronics and Communication Engineering | Portfolio</p>
+</header>
+
+<div class="container">
+    <div class="box" onclick="openResume()">RESUME</div>
+    <div class="box" onclick="goToProjects()">PROJECTS</div>
+    <div class="box" onclick="goToInternships()">INTERNSHIPS</div>
+    <div class="box" onclick="goToAchievements()">ACHIEVEMENTS</div>
+</div>
+
+<!-- PROJECTS -->
+<section id="projects">
     <h2>Projects</h2>
-    <h2>Projects</h2>
+    <div class="grid">
+        <div class="card">
+            <h3>Bus Crowd Management</h3>
+            <p>IoT system for overcrowding detection and control.</p>
+        </div>
 
-<h3>Bus Crowd Management System</h3>
-<p>Developed an IoT-based system to detect overcrowding and control bus doors automatically using ESP8266.</p>
-    <a href="https://github.com/dhesika-24">View Project</a>
+        <div class="card">
+            <h3>LoRa Monitoring</h3>
+            <p>Long-range environmental monitoring system.</p>
+        </div>
 
-<h3>LoRa Weather Monitoring System</h3>
-<p>Built a long-range environmental monitoring system for remote areas using LoRa technology.</p>
-    <a href="https://github.com/dhesika-24">View Project</a>
+        <div class="card">
+            <h3>Drone Project</h3>
+            <p>Designed and tested drone system.</p>
+        </div>
 
-<h3>Drone Project</h3>
-<p>Designed and tested a drone focusing on control systems and hardware integration.</p>
-    <a href="https://github.com/dhesika-24">View Project</a>
+        <div class="card">
+            <h3>Spring Boot Backend</h3>
+            <p>Developed REST APIs.</p>
+        </div>
+    </div>
+</section>
 
-<h3>Spring Boot Backend</h3>
-<p>Developed REST APIs for backend services using Spring Boot.</p>
-    <a href="https://github.com/dhesika-24">View Project</a>
+<!-- INTERNSHIPS -->
+<section id="internships">
+    <h2>Internships</h2>
+    <div class="grid">
+        <div class="card">
+            <p>IoT Internship</p>
+            <a href="iot-certificate.pdf" target="_blank">View Certificate</a>
+        </div>
 
-    <h2>Contact</h2>
-    <p>Email: your email</p>
+        <div class="card">
+            <p>PCB Designing</p>
+            <a href="pcb-certificate.pdf" target="_blank">View Certificate</a>
+        </div>
 
-</body style="font-family: Arial; margin: 40px; background-color: #f5f5f5;">
+        <div class="card">
+            <p>VLSI (Cadence)</p>
+            <a href="vlsi-certificate.pdf" target="_blank">View Certificate</a>
+        </div>
+    </div>
+</section>
+
+<!-- ACHIEVEMENTS -->
+<section id="achievements">
+    <h2>Achievements</h2>
+    <div class="grid">
+        <div class="card">
+            <p>Completed Spring Boot Certification</p>
+        </div>
+
+        <div class="card">
+            <p>Built real-time IoT systems</p>
+        </div>
+
+        <div class="card">
+            <p>Organized Doodle Detectives event</p>
+        </div>
+    </div>
+</section>
+
+<script>
+function openResume() {
+    window.open("resume.pdf", "_blank");
+}
+
+function goToProjects() {
+    document.getElementById("projects").scrollIntoView({ behavior: "smooth" });
+}
+
+function goToInternships() {
+    document.getElementById("internships").scrollIntoView({ behavior: "smooth" });
+}
+
+function goToAchievements() {
+    document.getElementById("achievements").scrollIntoView({ behavior: "smooth" });
+}
+</script>
+
+</body>
 </html>
