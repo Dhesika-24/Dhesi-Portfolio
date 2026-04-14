@@ -5,7 +5,7 @@
 
 <style>
 
-/* ================= BACKGROUND ================= */
+/* ================= PREMIUM BACKGROUND ================= */
 body {
     margin: 0;
     font-family: 'Segoe UI';
@@ -14,6 +14,7 @@ body {
     overflow-x: hidden;
 }
 
+/* ================= TECH NETWORK BACKGROUND ================= */
 canvas {
     position: fixed;
     top: 0;
@@ -50,6 +51,7 @@ nav a {
     flex-wrap: wrap;
 }
 
+/* CENTER GLASS CARD */
 .hero-center {
     flex: 1;
     text-align: center;
@@ -66,7 +68,7 @@ nav a {
     color: #4338ca;
 }
 
-/* ================= IMAGE ================= */
+/* ================= PROFILE IMAGE ================= */
 .hero-right {
     display: flex;
     justify-content: center;
@@ -80,6 +82,8 @@ nav a {
     border-radius: 12px;
     object-fit: cover;
     border: 3px solid #6366f1;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    background: white;
 }
 
 /* ================= SOCIAL ================= */
@@ -114,6 +118,7 @@ section {
 
 .card:hover {
     transform: translateY(-6px);
+    background: rgba(99,102,241,0.1);
 }
 
 /* ================= POPUP ================= */
@@ -132,6 +137,7 @@ section {
 #popup img {
     max-width: 80%;
     max-height: 80%;
+    border-radius: 12px;
 }
 
 </style>
@@ -158,8 +164,8 @@ section {
         <p>Electronics & Communication Engineering</p>
 
         <div class="social">
-            <a href="#">LinkedIn</a>
-            <a href="#">GitHub</a>
+            <a href="https://linkedin.com/in/your-link" target="_blank">LinkedIn</a>
+            <a href="https://github.com/yourusername" target="_blank">GitHub</a>
         </div>
     </div>
 
@@ -194,10 +200,21 @@ section {
 
 <div class="grid">
 
-    <div class="card" onclick="openImage('images/cit.png')">CIT Certificate</div>
-    <div class="card" onclick="openImage('images/citcertificate.png')">CIT Completion</div>
-    <div class="card" onclick="openImage('images/rvs.png')">RVS Certificate</div>
-    <div class="card" onclick="openImage('images/tnwis.png')">TNWIS Certificate</div>
+    <div class="card" onclick="openImage('https://github.com/Dhesika-24/My-Certifications/blob/main/cit.png?raw=true')">
+        CIT Certificate
+    </div>
+
+    <div class="card" onclick="openImage('https://github.com/Dhesika-24/My-Certifications/blob/main/citcertificate.png?raw=true')">
+        CIT Completion
+    </div>
+
+    <div class="card" onclick="openImage('https://github.com/Dhesika-24/My-Certifications/blob/main/rvs.png?raw=true')">
+        RVS Certificate
+    </div>
+
+    <div class="card" onclick="openImage('https://github.com/Dhesika-24/My-Certifications/blob/main/tnwis.png?raw=true')">
+        TNWIS Certificate
+    </div>
 
 </div>
 </section>
@@ -235,7 +252,7 @@ const ctx = canvas.getContext("2d");
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
-let dots = Array.from({length: 60}, () => ({
+let dots = Array.from({length: 80}, () => ({
     x: Math.random() * canvas.width,
     y: Math.random() * canvas.height,
     vx: (Math.random() - 0.5),
@@ -254,6 +271,7 @@ function animate(){
         if(d.x < 0 || d.x > canvas.width) d.vx *= -1;
         if(d.y < 0 || d.y > canvas.height) d.vy *= -1;
 
+        ctx.fillStyle = "#6366f1";
         ctx.beginPath();
         ctx.arc(d.x,d.y,2,0,Math.PI*2);
         ctx.fill();
@@ -262,7 +280,8 @@ function animate(){
             let d2 = dots[j];
             let dist = Math.hypot(d.x-d2.x, d.y-d2.y);
 
-            if(dist < 100){
+            if(dist < 120){
+                ctx.strokeStyle = "rgba(99,102,241,0.15)";
                 ctx.beginPath();
                 ctx.moveTo(d.x,d.y);
                 ctx.lineTo(d2.x,d2.y);
